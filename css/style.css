@@ -1,0 +1,47 @@
+body {
+    background-color: lightcyan;
+    text-align: center;
+}
+
+.Buttons {
+    margin-top: 50px;
+}
+
+h1 {
+    text-align: center;
+    color: red;
+}
+
+table {
+    text-align: center;
+    margin: auto;
+    margin-top: 50px;
+    background-color: rgb(66, 76, 152)
+}
+
+.cell {
+    padding: 10px;
+    border: 0.5px solid white;
+    width: 40px;
+    height: 40px;
+    text-align: center;
+    font-size: 1.5em;
+}
+
+.hidden {
+    text-align: center;
+    margin: auto;
+    margin-top: 50px;
+    background-color: rgb(148, 12, 12)
+}
+
+.numhidden {
+    display: none;
+}
+
+footer {
+    font-size: larger;
+    margin-top: 50px;
+    border: 3px solid gray;
+    background-color: beige;
+}
