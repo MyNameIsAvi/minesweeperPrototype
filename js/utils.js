@@ -10,7 +10,7 @@ function renderBoard(board, selector) {
             var className = `cell cell-${i}-${j}, Shown`
             var location = `${i}-${j}`
             var minesCount = countNegs(i, j, board)
-            strHTML += `<td class="${className}" onclick="onCellClicked(this,${i},${j})" data="${location}"><span class="numhidden">${board[i][j] === MINE ? MINE : minesCount}
+            strHTML += `<td class="${className}" onclick="onCellClicked(this,${i},${j})" oncontextmenu="rightClick(this,${i},${j})" data="${location}"><span class="numhidden">${board[i][j] === MINE ? MINE : minesCount}
              ${board[i][j].classList !== 'hidden' ? minesCount = '' : minesCount = countNegs(i, j, board)}</span></td>`
         }
         strHTML += '</tr>'

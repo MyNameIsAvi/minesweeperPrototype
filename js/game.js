@@ -111,4 +111,7 @@ function hardMode() {
     onInIt()
 }
 
+function rightClick(elCell, cellI, CellJ) {
+    event.preventDefault()
+}
 
