@@ -28,12 +28,7 @@ table {
     font-size: 1.5em;
 }
 
-.hidden {
-    text-align: center;
-    margin: auto;
-    margin-top: 50px;
-    background-color: rgb(148, 12, 12)
-}
+
 
 .numhidden {
     display: none;

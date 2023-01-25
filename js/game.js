@@ -1,6 +1,6 @@
 'use strict'
-const none = ''
 const MINE = '💣'
+const FLAG = '🚩'
 
 
 var gBoard = makeGboard()
@@ -15,6 +15,7 @@ function makeGboard() {
 
     }
 }
+
 function levels() {
     return gLevel = {
         SIZE: 4,
@@ -47,6 +48,7 @@ function buildBoard(rows, cols) {
         for (var j = 0; j < gLevel.SIZE; j++) {
             board[i][j] = {
                 minesAround: 0,
+                isShown: false,
                 isMine: false,
                 isMarked: false
             }
@@ -56,37 +58,34 @@ function buildBoard(rows, cols) {
     // board[2][1] = MINE
     return board
 }
-function countNegs(cellI, cellJ, mat) {
-    var negsCount = 0
-    for (var i = cellI - 1; i <= cellI + 1; i++) {
-        if (i < 0 || i >= mat.length) continue
-        for (var j = cellJ - 1; j <= cellJ + 1; j++) {
-            if (j < 0 || j >= mat[i].length) continue
-            if (mat[i][j] === MINE) negsCount++
-        }
-    }
-    return negsCount
-}
-
-function onCellClicked(elCell, cellI, cellJ) {
-    var elSpan = elCell.querySelector('.cell span')
-    elCell.classList.remove = 'numhidden'
-    elSpan.style.display = 'block'
-
-}
 
 function placeMines(board, size) {
     for (var i = 0; i < (gLevel.MINES); i++) {
         function getPos() {
             var pos = [getRandomIntInclusive(0, size - 1), getRandomIntInclusive(0, size - 1)];
-            if (board[pos[0]][pos[1]].isMine) return getPos();
+            if (board[pos[0]][pos[1]].isMine) return getPos()
             // board[pos[0]][pos[1]].isMine = true
-            return pos;
+            return pos
         }
         var randomPos = getPos()
-        board[randomPos[0]][randomPos[1]] = MINE
+        board[randomPos[0]][randomPos[1]].isMine = true
     }
 }
+
+
+function gameOver(elCell) {
+    var elSpan = elCell.querySelector('.numhidden')
+    for (var i = 0; i < gBoard.length; i++) {
+        for (var j = 0; j < gBoard[i].length; j++) {
+            if (gBoard[i][j].isMine) {
+                gBoard[i][j].isShown = true
+                // elSpan.classList.remove('numhidden')
+
+            }
+        }
+    }
+}
+
 
 function easyMode() {
     gLevel = {
@@ -96,6 +95,7 @@ function easyMode() {
     onInIt()
 
 }
+
 function mediumMode() {
     gLevel = {
         SIZE: 8,
@@ -103,15 +103,12 @@ function mediumMode() {
     }
     onInIt()
 }
+
 function hardMode() {
     gLevel = {
         SIZE: 12,
         MINES: 32
     }
     onInIt()
-}
-
-function rightClick(elCell, cellI, CellJ) {
-    event.preventDefault()
 }
 
