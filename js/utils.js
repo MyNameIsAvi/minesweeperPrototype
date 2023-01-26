@@ -2,12 +2,11 @@
 
 
 function renderBoard(board, selector) {
-
     var strHTML = '<table><tbody>'
     for (var i = 0; i < board.length; i++) {
         strHTML += '<tr>'
         for (var j = 0; j < board[0].length; j++) {
-            var className = `cell cell-${i}-${j}, Shown`
+            var className = `cell cell-${i}-${j}`
             var location = `${i}-${j}`
             var minesCount = countNegs(i, j, board)
             strHTML += `<td class="${className}" cell-value="${minesCount}" onclick="onCellClicked(this,${i},${j})" oncontextmenu="rightClick(this,${i},${j})" data="${location}"><span class="numhidden">${board[i][j].isMine ? MINE : minesCount}
